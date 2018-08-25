@@ -1,9 +1,9 @@
 const {from, to} = require('./utils')
 const crypto = require('crypto-browserify')
 
-let hash = function (hashAlg, data, args) {
-  let fromType = args.from
-  let toType = args.to
+let hash = function (hashAlg, data, enc = {}) {
+  let fromType = enc.from
+  let toType = enc.to
   data = from(data, fromType)
   let result = crypto.createHash(hashAlg).update(data).digest()
   return to(result, toType)
@@ -12,27 +12,27 @@ let hash = function (hashAlg, data, args) {
 module.exports = {
   hash,
 
-  md5 (data, args) {
-    return hash('md5', data, args)
+  md5 (data, enc) {
+    return hash('md5', data, enc)
   },
 
-  sha1 (data, args) {
-    return hash('sha1', data, args)
+  sha1 (data, enc) {
+    return hash('sha1', data, enc)
   },
 
-  sha256 (data, args) {
-    return hash('sha256', data, args)
+  sha256 (data, enc) {
+    return hash('sha256', data, enc)
   },
 
-  sha384 (data, args) {
-    return hash('sha384', data, args)
+  sha384 (data, enc) {
+    return hash('sha384', data, enc)
   },
 
-  sha512 (data, args) {
-    return hash('sha512', data, args)
+  sha512 (data, enc) {
+    return hash('sha512', data, enc)
   },
 
-  ripemd160 (data, args) {
-    return hash('ripemd160', data, args)
+  ripemd160 (data, enc) {
+    return hash('ripemd160', data, enc)
   }
 }

@@ -1,10 +1,10 @@
 const {from, to} = require('./utils')
 const CryptoJS = require("crypto-js");
 
-let symmEnc = function (symmAlg, data, key, args) {
-  let fromType = args.from
-  let toType = args.to
-  let keyType = args.key
+let symmEnc = function (symmAlg, data, key, enc = {}) {
+  let fromType = enc.from
+  let toType = enc.to
+  let keyType = enc.key
   data = from(data, fromType)
   key = from(key, keyType)
 
@@ -31,10 +31,10 @@ let symmEnc = function (symmAlg, data, key, args) {
   return to(result, toType)
 }
 
-let symmDec = function (symmAlg, data, key, args) {
-  let fromType = args.from
-  let toType = args.to
-  let keyType = args.key
+let symmDec = function (symmAlg, data, key, enc) {
+  let fromType = enc.from
+  let toType = enc.to
+  let keyType = enc.key
   data = from(data, fromType)
   key = from(key, keyType)
 
@@ -66,19 +66,19 @@ module.exports = {
 
   symmDec,
 
-  des168Enc (data, key, args) {
-    return symmEnc('des168', data, key, args)
+  des168Enc (data, key, enc) {
+    return symmEnc('des168', data, key, enc)
   },
 
-  des168Dec (data, key, args) {
-    return symmDec('des168', data, key, args)
+  des168Dec (data, key, enc) {
+    return symmDec('des168', data, key, enc)
   },
 
-  aesEnc (data, key, args) {
-    return symmEnc('aes', data, key, args)
+  aesEnc (data, key, enc) {
+    return symmEnc('aes', data, key, enc)
   },
 
-  aesDec (data, key, args) {
-    return symmDec('aes', data, key, args)
+  aesDec (data, key, enc) {
+    return symmDec('aes', data, key, enc)
   }
 }

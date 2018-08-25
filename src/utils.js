@@ -1,8 +1,9 @@
 
 module.exports = {
   from (data, fromType) {
-    if (!fromType) return data
-    return Buffer.from(data, fromType)
+    if (fromType === 'hex') return Buffer.from(data, 'hex')
+    if (fromType === 'base64') return Buffer.from(data, 'base64')
+    return Buffer.from(data)
   },
 
   to (buffer, toType) {
