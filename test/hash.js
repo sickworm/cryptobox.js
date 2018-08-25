@@ -1,14 +1,28 @@
 const {expect} = require('chai')
-const {md5} = require('../src/hash')
+const {md5, sha1, sha256, sha384, sha512, ripemd160} = require('../src/hash')
 
 describe('test', function () {
-  it('test1', () => {
-    expect(1 + 1).to.equal(2)
-  })
-  it('test2', () => {
-    expect(1 + 2).to.equal(3)
-  })
   it('md5', function () {
-    console.log(md5('a', 'hex', 'hex'))
+    console.log(md5('31', {from: 'hex', to: 'hex'}))
+  })
+
+  it('sha1', function () {
+    console.log(sha1('31', {from: 'hex', to: 'hex'}))
+  })
+
+  it('sha256', function () {
+    console.log(sha256('31', {from: 'hex', to: 'hex'}))
+  })
+
+  it('sha384', function () {
+    console.log(sha384('31', {from: 'hex', to: 'hex'}))
+  })
+
+  it('sha512', function () {
+    console.log(sha512('31', {from: 'hex', to: 'hex'}))
+  })
+
+  it('ripemd160', function () {
+    console.log(ripemd160('31', {from: 'hex', to: 'hex'}))
   })
 })
